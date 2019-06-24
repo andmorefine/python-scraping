@@ -17,7 +17,7 @@ headers = { 'Content-Type': 'application/json', }
 file = open('rspec_file.csv', 'w')
 writer = csv.writer(file, lineterminator='\n')
 
-url_link = ['AllFiles', 'Controllers', 'Channels', 'Models', 'Mailers', 'Helpers', 'Jobs', 'Libraries', 'Ungrouped']
+url_link = ['AllFiles', 'Controllers', 'Models', 'Mailers', 'Helpers', 'Jobs', 'Libraries', 'Ungrouped']
 # url_link = ['AllFiles']
 
 url = "http://samurai.page.gitlab.usaqh.com/living-related/#_AllFiles"
@@ -31,10 +31,13 @@ for link in url_link:
   covered_percent = soup.find(id=f'{link}').find(class_="covered_percent").find("span").text
   covered = covered_percent.replace('%', '')
 
+  # 表示する数値
+  print(covered)
+
   cover_array = []
   # cover_array.append(link)
   cover_array.append(covered)
-  print(cover_array)
+  # print(cover_array)
 
   writer.writerow(cover_array)
 
